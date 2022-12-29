@@ -1,0 +1,26 @@
+services:
+
+  app:
+    container_name: laravel-app
+    build: .
+    volumes:
+      - ./mathebe:/var/www/html
+    ports:
+      - 9000:80
+  
+  
+  mysql_db:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: mathebe
+      MYSQL_ROOT_PASSWORD: 'root'
+      
+    ports:
+    - 3306:3306
+  
+  phpmyadmin:
+    image: phpmyadmin:latest
+    ports:
+      - 9001:80
+    environment:
+      - PMA_ARBITRARY=1
